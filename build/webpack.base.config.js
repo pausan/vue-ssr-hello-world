@@ -1,6 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const TerserJSPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
@@ -46,18 +48,9 @@ module.exports = {
         }
       },
       {
-        test: /\.styl(us)?$/,
+        test: /\.(styl(us)|css)?$/,
         use: isProd
-          ? ExtractTextPlugin.extract({
-              use: [
-                {
-                  loader: 'css-loader',
-                  options: { minimize: true }
-                },
-                'stylus-loader'
-              ],
-              fallback: 'vue-style-loader'
-            })
+          ? MiniCssExtractPlugin.loader
           : ['vue-style-loader', 'css-loader', 'stylus-loader']
       },
     ]
@@ -65,15 +58,16 @@ module.exports = {
   performance: {
     hints: false
   },
+  optimization: {
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+  },
   plugins: isProd
     ? [
         new VueLoaderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-          compress: { warnings: false }
-        }),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new ExtractTextPlugin({
-          filename: 'common.[chunkhash].css'
+        new MiniCssExtractPlugin({
+          filename: '[name].css',
+          chunkFilename: '[id].css',
         })
       ]
     : [

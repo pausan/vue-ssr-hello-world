@@ -5,8 +5,8 @@ npm-debug.log
 yarn-error.log
 .idea
 *.iml
+stats.json
 
 # disabled on purpose, this is just an example. On real application you'd better
 # remove this line
 package-lock.json
-

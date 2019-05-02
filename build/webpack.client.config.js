@@ -20,6 +20,8 @@ const config = merge(base, {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': '"client"'
     }),
+
+/*
     // extract vendor chunks for better caching
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -37,13 +39,14 @@ const config = merge(base, {
     // on every build.
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest'
-    }),
+    }),*/
+
     new VueSSRClientPlugin(),
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ]
 })
 
-if (process.env.NODE_ENV === 'production') {
+/*if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
     // auto generate service worker
     new SWPrecachePlugin({
@@ -72,6 +75,6 @@ if (process.env.NODE_ENV === 'production') {
       ]
     })
   )
-}
+}*/
 
 module.exports = config

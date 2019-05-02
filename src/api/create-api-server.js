@@ -14,7 +14,7 @@ export function createAPI () {
   api.onServer = true
 
   // item cache: FIXME! unused now
-  api.cachedItems = LRU({
+  api.cachedItems = new LRU({
     max: 1000,
     maxAge: 1000 * 60 * 15 // 15 min cache
   })

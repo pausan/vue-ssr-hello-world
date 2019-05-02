@@ -56,18 +56,6 @@ npm run build
 npm start
 ```
 
-## Bundle Analyzer
-
-To optimize the libraries used, it uses webpack-bundle-analyzer to be able to
-analyze all bundled files for the client version.
-
-Run:
-
-``` bash
-npm run analyze
-./node_modules/.bin/webpack-bundle-analyzer -O ./stats.json
-```
-
 ## License
 
 Code is based on the one provided by [Vue Hacker News SSR example](https://github.com/vuejs/vue-hackernews-2.0)

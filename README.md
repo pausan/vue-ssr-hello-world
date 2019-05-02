@@ -1,6 +1,6 @@
 # Vue SSR Hello World
 
-Simplified version of [Vue Hacker News SSR example](https://github.com/vuejs/vue-hackernews-2.0) as a personal exercise to disect and analyze all parts of a vue SSR application and to make simple experiments of client and server rendered code.
+Simplified version of [Vue Hacker News SSR example](https://github.com/vuejs/vue-hackernews-2.0) as a personal exercise to disect and analyze all parts of a vue Server Side Rendering (SSR) application. I'm using the project to make simple experiments on client and server rendered code.
 
 I'm sharing this project with the aim to help other people, but this project is not maintained.
 
@@ -54,6 +54,18 @@ npm run build
 
 # serve in production mode
 npm start
+```
+
+## Bundle Analyzer
+
+To optimize the libraries used, it uses webpack-bundle-analyzer to be able to
+analyze all bundled files for the client version.
+
+Run:
+
+``` bash
+npm run analyze
+./node_modules/.bin/webpack-bundle-analyzer -O ./stats.json
 ```
 
 ## License

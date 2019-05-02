@@ -2,7 +2,7 @@ import LRU from 'lru-cache'
 
 // Configured in webpack.server.config.js as alias
 export function createAPI () {
-  console.log ("Server Version")
+  console.log ("createApi.Server")
 
   if (process.__API__)
     return process.__API__

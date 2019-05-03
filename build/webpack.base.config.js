@@ -20,7 +20,9 @@ module.exports = function getWebpackBaseConfig (isProd) {
     },
     resolve: {
       alias: {
-        'public': path.resolve(__dirname, '../public')
+        'public': path.resolve(__dirname, '../public'),
+        // used by default already:
+        // 'vue$': 'vue/dist/vue.runtime.esm.js'
       }
     },
     module: {

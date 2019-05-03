@@ -3,6 +3,7 @@ const merge = require('webpack-merge')
 const getWebpackBaseConfig = require('./webpack.base.config')
 const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
+const Visualizer = require('webpack-visualizer-plugin');
 
 function getConfig (isProd) {
   const config = merge(
@@ -13,17 +14,18 @@ function getConfig (isProd) {
       },
       resolve: {
         alias: {
-          'create-api': './create-api-client.js'
+          'create-api': './create-api-client.js',
         }
       },
       plugins: [
         // strip dev-only code in Vue source
         new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+          'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
           'process.env.VUE_ENV': '"client"'
         }),
 
-        new VueSSRClientPlugin()
+        new VueSSRClientPlugin(),
+        // new Visualizer()
       ]
     }
   )

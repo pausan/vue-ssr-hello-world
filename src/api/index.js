@@ -1,6 +1,6 @@
 // this is aliased in webpack config based on server/client build
+import axios from 'axios';
 import { createAPI } from 'create-api'
-
 
 export function fetchItems () {
   return new Promise ( (resolve, reject) => {
@@ -18,6 +18,17 @@ export function fetchItems () {
     const api = createAPI()
     data.push ({ id: 2, value : api.onServer ? 'server' : 'client' })
 
-    setTimeout (() => resolve (data), 1500)
+    // NOTE: uncomment next line for fastest performance
+    // return resolve (data);
+
+    axios('https://randomuser.me/api/?results=10').then ((randomUsers) => {
+      for (const item of randomUsers.data.results) {
+        data.push ({ id : 'axios-' + data.length, value : item.login.username });
+      }
+
+      // add an additional delay
+      setTimeout (() => resolve (data), 1000)
+    });
+
   });
 }

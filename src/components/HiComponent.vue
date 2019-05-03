@@ -1,9 +1,12 @@
 <template>
-  <div>hi from the component</div>
+  <div>hi {{ item.id }}: {{ item.value }}</div>
 </template>
 
 <script>
 export default {
-  name : 'hi-component'
+  name : 'hi-component',
+  props : {
+    item : Object
+  }
 }
 </script>

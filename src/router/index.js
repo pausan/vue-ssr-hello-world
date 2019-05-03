@@ -15,7 +15,7 @@ export function createRouter () {
     routes: [
       { path: '/hello', component: createHelloView },
       { path: '/world', component: createWorldView },
-      { path: '/', redirect: '/top' }
+      { path: '/', redirect: '/hello' }
     ]
   })
 }

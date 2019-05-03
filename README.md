@@ -75,7 +75,7 @@ With Firefox I've got the following results:
 #### Empty Cache:
 
  | Type | Size | Transferred | Time | Non-blocking Time |
- | --- | --- |
+ | --- | --- | --- | --- | --- |
  | 4 js | 129.11 KB | 45.10 KB | 0.01 s | 0.01 s |
  | 1 html | 2.31 KB | 1.24 KB | 0.01 s | 0.01 s |
  | 1 images | 1.08 KB | 1.08 KB | 0 s | 0 s |
@@ -90,7 +90,7 @@ Non blocking time: 0.02 seconds
 #### Primed Cache:
 
 | Type | Size | Transferred | Time | Non-blocking Time |
-| --- | --- |
+| --- | --- | --- | --- | --- |
 | 1 html | 2.31 KB | 1.24 KB | 0.01 s | 0.01 s |
 | 1 images | 1.08 KB | 1.08 KB | 0 s | 0 s |
 | 4 js | 0 KB | 0 KB | 0 s | 0 s |
